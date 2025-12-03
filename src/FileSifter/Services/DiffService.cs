@@ -191,7 +191,10 @@ public sealed class DiffService
                 EndedUtc = DateTime.UtcNow
             }
         };
-        Infrastructure.Export.SummaryWriter.Write(exportRoot, summary);
+        if (_settings.GenerateSummary)
+        {
+            Infrastructure.Export.SummaryWriter.Write(exportRoot, summary);
+        }
 
         log("Done.");
         return summary;
