@@ -5,6 +5,7 @@ public sealed class AppSettings
     public string HashAlgorithm { get; set; } = "xxhash64"; // or sha256
     public string OnExisting { get; set; } = "overwrite";   // overwrite | skip | rename
     public bool GenerateRemovedList { get; set; } = true;
+    public bool GenerateSummary { get; set; } = true;
     public bool OpenExplorerAfterExport { get; set; } = true;
     public int Parallelism { get; set; } = 4;
 

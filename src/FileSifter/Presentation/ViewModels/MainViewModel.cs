@@ -27,6 +27,7 @@ public sealed class MainViewModel : INotifyPropertyChanged
         SelectedHashAlgorithm = _settings.HashAlgorithm;
         SelectedExistingPolicy = _settings.OnExisting;
         GenerateRemovedList = _settings.GenerateRemovedList;
+        GenerateSummary = _settings.GenerateSummary;
         OpenExplorerAfterExport = _settings.OpenExplorerAfterExport;
     }
 
@@ -50,6 +51,9 @@ public sealed class MainViewModel : INotifyPropertyChanged
 
     private bool _generateRemovedList;
     public bool GenerateRemovedList { get => _generateRemovedList; set { _generateRemovedList = value; OnChanged(); } }
+
+    private bool _generateSummary;
+    public bool GenerateSummary { get => _generateSummary; set { _generateSummary = value; OnChanged(); } }
 
     private bool _openExplorerAfterExport;
     public bool OpenExplorerAfterExport { get => _openExplorerAfterExport; set { _openExplorerAfterExport = value; OnChanged(); } }
@@ -142,6 +146,7 @@ public sealed class MainViewModel : INotifyPropertyChanged
         _settings.HashAlgorithm = SelectedHashAlgorithm;
         _settings.OnExisting = SelectedExistingPolicy;
         _settings.GenerateRemovedList = GenerateRemovedList;
+        _settings.GenerateSummary = GenerateSummary;
         _settings.OpenExplorerAfterExport = OpenExplorerAfterExport;
         _settingsService.Save();
     }

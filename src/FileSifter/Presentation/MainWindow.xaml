@@ -41,6 +41,8 @@
         <StackPanel Grid.Row="4" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="0,6">
             <CheckBox Content="Generate removed.txt"
                       IsChecked="{Binding GenerateRemovedList}"/>
+            <CheckBox Content="Generate summary files" Margin="16,0,0,0"
+                      IsChecked="{Binding GenerateSummary}"/>
             <CheckBox Content="Open Explorer after export" Margin="16,0,0,0"
                       IsChecked="{Binding OpenExplorerAfterExport}"/>
         </StackPanel>
