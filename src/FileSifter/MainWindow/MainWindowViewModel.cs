@@ -1,22 +1,21 @@
+using FileSifter.Application.Services;
+using FileSifter.Domain.Config;
+using FileSifter.Infrastructure.Settings;
+using Microsoft.Win32;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using Microsoft.Win32;
-using FileSifter.App;
-using FileSifter.Domain.Config;
-using FileSifter.Services;
-using FileSifter.Infrastructure.Settings;
 
-namespace FileSifter.Presentation.ViewModels;
+namespace FileSifter.MainWindow;
 
-public sealed class MainViewModel : INotifyPropertyChanged
+public sealed class MainWindowViewModel : INotifyPropertyChanged
 {
     private readonly SettingsService _settingsService;
     private readonly AppSettings _settings;
     private CancellationTokenSource? _cts;
 
-    public MainViewModel()
+    public MainWindowViewModel()
     {
         _settingsService = Bootstrapper.InitializeSettings();
         _settings = _settingsService.Current;

@@ -1,7 +1,6 @@
-using System.IO;
+using FileSifter.Domain.Results;
 using System.Text;
 using System.Text.Json;
-using FileSifter.Domain.Results;
 
 namespace FileSifter.Infrastructure.Export;
 

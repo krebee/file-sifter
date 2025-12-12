@@ -1,13 +1,12 @@
 using System.Windows;
-using FileSifter.Presentation.ViewModels;
 
-namespace FileSifter.Presentation;
+namespace FileSifter.MainWindow;
 
 public partial class MainWindow : Window
 {
     public MainWindow()
     {
         InitializeComponent();
-        DataContext = new MainViewModel();
+        DataContext = new MainWindowViewModel();
     }
 }

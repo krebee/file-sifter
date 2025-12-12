@@ -1,6 +1,5 @@
-using System.IO;
-using System.Text.Json;
 using FileSifter.Domain.Config;
+using System.Text.Json;
 
 namespace FileSifter.Infrastructure.Settings;
 

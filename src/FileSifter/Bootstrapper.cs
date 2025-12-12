@@ -1,8 +1,6 @@
-using System;
-using System.IO;
 using FileSifter.Infrastructure.Settings;
-
-namespace FileSifter.App;
+using System.IO;
+namespace FileSifter;
 
 public static class Bootstrapper
 {

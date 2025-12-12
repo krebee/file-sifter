@@ -1,4 +1,3 @@
-using System.IO;
 using FileSifter.Domain.Config;
 
 namespace FileSifter.Infrastructure.Util;
