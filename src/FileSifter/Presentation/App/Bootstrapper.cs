@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using FileSifter.Infrastructure.Settings;
 
-namespace FileSifter.App;
+namespace FileSifter.Presentation.App;
 
 public static class Bootstrapper
 {

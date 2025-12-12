@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ApplicationDefinition Include="App\App.xaml">
+    <ApplicationDefinition Include="Presentation\App\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
