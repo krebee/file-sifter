@@ -1,7 +1,6 @@
-using System.IO;
 using System.Security.Cryptography;
 
-namespace FileSifter.Services;
+namespace FileSifter.Application.Services;
 
 public sealed class HashService
 {

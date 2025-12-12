@@ -1,4 +1,4 @@
-namespace FileSifter.Services;
+namespace FileSifter.Application.Services;
 
 public sealed class ProgressReporter
 {
