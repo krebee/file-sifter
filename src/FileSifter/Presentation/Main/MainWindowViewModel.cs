@@ -3,32 +3,26 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Microsoft.Win32;
-using FileSifter.App;
 using FileSifter.Domain.Config;
 using FileSifter.Services;
 using FileSifter.Infrastructure.Settings;
+using FileSifter.Presentation.App;
 
-namespace FileSifter.Presentation.ViewModels;
+namespace FileSifter.Presentation.Main;
 
-public sealed class MainViewModel : INotifyPropertyChanged
+public sealed class MainWindowViewModel : INotifyPropertyChanged
 {
     private readonly SettingsService _settingsService;
     private readonly AppSettings _settings;
     private CancellationTokenSource? _cts;
 
-    public MainViewModel()
+    public MainWindowViewModel()
     {
         _settingsService = Bootstrapper.InitializeSettings();
         _settings = _settingsService.Current;
 
         HashAlgorithms = new[] { "xxhash64", "sha256" };
         ExistingPolicies = new[] { "overwrite", "skip", "rename" };
-
-        SelectedHashAlgorithm = _settings.HashAlgorithm;
-        SelectedExistingPolicy = _settings.OnExisting;
-        GenerateRemovedList = _settings.GenerateRemovedList;
-        GenerateSummary = _settings.GenerateSummary;
-        OpenExplorerAfterExport = _settings.OpenExplorerAfterExport;
     }
 
     #region Bindable Properties
@@ -42,21 +36,76 @@ public sealed class MainViewModel : INotifyPropertyChanged
     public string? ExportFolder { get => _exportFolder; set { _exportFolder = value; OnChanged(); } }
 
     public string[] HashAlgorithms { get; }
-    private string _selectedHashAlgorithm = "xxhash64";
-    public string SelectedHashAlgorithm { get => _selectedHashAlgorithm; set { _selectedHashAlgorithm = value; OnChanged(); } }
+    public string SelectedHashAlgorithm
+    {
+        get => _settings.HashAlgorithm;
+        set
+        {
+            if (_settings.HashAlgorithm != value)
+            {
+                _settings.HashAlgorithm = value;
+                OnChanged();
+                _settingsService.Save();
+            }
+        }
+    }
 
     public string[] ExistingPolicies { get; }
-    private string _selectedExistingPolicy = "overwrite";
-    public string SelectedExistingPolicy { get => _selectedExistingPolicy; set { _selectedExistingPolicy = value; OnChanged(); } }
+    public string SelectedExistingPolicy
+    {
+        get => _settings.OnExisting;
+        set
+        {
+            if (_settings.OnExisting != value)
+            {
+                _settings.OnExisting = value;
+                OnChanged();
+                _settingsService.Save();
+            }
+        }
+    }
 
-    private bool _generateRemovedList;
-    public bool GenerateRemovedList { get => _generateRemovedList; set { _generateRemovedList = value; OnChanged(); } }
+    public bool GenerateRemovedList
+    {
+        get => _settings.GenerateRemovedList;
+        set
+        {
+            if (_settings.GenerateRemovedList != value)
+            {
+                _settings.GenerateRemovedList = value;
+                OnChanged();
+                _settingsService.Save();
+            }
+        }
+    }
 
-    private bool _generateSummary;
-    public bool GenerateSummary { get => _generateSummary; set { _generateSummary = value; OnChanged(); } }
+    public bool GenerateSummary
+    {
+        get => _settings.GenerateSummary;
+        set
+        {
+            if (_settings.GenerateSummary != value)
+            {
+                _settings.GenerateSummary = value;
+                OnChanged();
+                _settingsService.Save();
+            }
+        }
+    }
 
-    private bool _openExplorerAfterExport;
-    public bool OpenExplorerAfterExport { get => _openExplorerAfterExport; set { _openExplorerAfterExport = value; OnChanged(); } }
+    public bool OpenExplorerAfterExport
+    {
+        get => _settings.OpenExplorerAfterExport;
+        set
+        {
+            if (_settings.OpenExplorerAfterExport != value)
+            {
+                _settings.OpenExplorerAfterExport = value;
+                OnChanged();
+                _settingsService.Save();
+            }
+        }
+    }
 
     private double _progress;
     public double Progress { get => _progress; set { _progress = value; OnChanged(); } }
@@ -102,8 +151,6 @@ public sealed class MainViewModel : INotifyPropertyChanged
 
     private async Task StartAsync()
     {
-        SaveSettingsFromUI();
-
         _cts = new CancellationTokenSource();
         CanStart = false;
         CanCancel = true;
@@ -139,16 +186,6 @@ public sealed class MainViewModel : INotifyPropertyChanged
             CanStart = true;
             CanCancel = false;
         }
-    }
-
-    private void SaveSettingsFromUI()
-    {
-        _settings.HashAlgorithm = SelectedHashAlgorithm;
-        _settings.OnExisting = SelectedExistingPolicy;
-        _settings.GenerateRemovedList = GenerateRemovedList;
-        _settings.GenerateSummary = GenerateSummary;
-        _settings.OpenExplorerAfterExport = OpenExplorerAfterExport;
-        _settingsService.Save();
     }
 
     private void UpdateCanStart()

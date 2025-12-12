@@ -68,7 +68,6 @@
             </GroupBox>
         </StackPanel>
 
-        <TextBlock Grid.Row="7" Grid.ColumnSpan="3" HorizontalAlignment="Right" Opacity="0.6"
-                   Text="file-sifter MVP"/>
+
     </Grid>
 </Window>
