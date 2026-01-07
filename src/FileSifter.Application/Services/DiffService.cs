@@ -2,9 +2,8 @@ using FileSifter.Domain.Config;
 using FileSifter.Domain.Models;
 using FileSifter.Domain.Results;
 using FileSifter.Infrastructure.Scanning;
-using System.IO;
 
-namespace FileSifter.Services;
+namespace FileSifter.Application.Services;
 
 public sealed class DiffService
 {
