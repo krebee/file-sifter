@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 env:
-  DOTNET_VERSION: "9.0.x"
+  DOTNET_VERSION: "10.0.x"
 
 jobs:
   build:
@@ -31,15 +31,15 @@ jobs:
               **/global.json
 
       - name: Restore
-        run: dotnet restore ./src/FileSifter/FileSifter.csproj
+        run: dotnet restore ./src/FileSifter/FileSifter.Presentation.csproj
 
       - name: Build
-        run: dotnet build ./src/FileSifter/FileSifter.csproj -c Release --no-restore
+        run: dotnet build ./src/FileSifter/FileSifter.Presentation.csproj -c Release --no-restore
 
       # ここに将来テストプロジェクト追加 (例: dotnet test ...)
       - name: Verify WPF build artifacts
         run: |
-          if (Test-Path ./src/FileSifter/bin/Release/net8.0-windows/FileSifter.exe) {
+          if (Test-Path ./src/FileSifter/bin/Release/net10.0-windows/FileSifter.exe) {
             Write-Host "Executable found."
           } else {
             Write-Error "Build artifact not found."
@@ -50,5 +50,5 @@ jobs:
         with:
           name: file-sifter-build
           path: |
-            src/FileSifter/bin/Release/net8.0-windows/
+            src/FileSifter/bin/Release/net10.0-windows/
           retention-days: 7
