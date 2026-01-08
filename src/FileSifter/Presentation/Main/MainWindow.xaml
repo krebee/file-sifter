@@ -68,10 +68,5 @@
             </GroupBox>
         </StackPanel>
 
-<<<<<<<< HEAD:src/FileSifter/Presentation/Main/MainWindow.xaml
-
     </Grid>
-========
-</Grid>
->>>>>>>> レイヤード構成への全面リファクタリング:src/FileSifter/MainWindow/MainWindow.xaml
 </Window>
