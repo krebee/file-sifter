@@ -1,11 +1,8 @@
 using FileSifter.Infrastructure.Settings;
-<<<<<<<< HEAD:src/FileSifter/Presentation/App/Bootstrapper.cs
-
-namespace FileSifter.Presentation.App;
-========
+using System;
 using System.IO;
+
 namespace FileSifter;
->>>>>>>> レイヤード構成への全面リファクタリング:src/FileSifter/Bootstrapper.cs
 
 public static class Bootstrapper
 {
