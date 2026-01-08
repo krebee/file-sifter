@@ -26,4 +26,9 @@
     </ApplicationDefinition>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Presentation\App\" />
+    <Folder Include="Presentation\Main\" />
+  </ItemGroup>
+
 </Project>

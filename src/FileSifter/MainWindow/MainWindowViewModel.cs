@@ -6,18 +6,8 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-<<<<<<<< HEAD:src/FileSifter/Presentation/Main/MainWindowViewModel.cs
-using Microsoft.Win32;
-using FileSifter.Domain.Config;
-using FileSifter.Services;
-using FileSifter.Infrastructure.Settings;
-using FileSifter.Presentation.App;
-
-namespace FileSifter.Presentation.Main;
-========
 
 namespace FileSifter.MainWindow;
->>>>>>>> レイヤード構成への全面リファクタリング:src/FileSifter/MainWindow/MainWindowViewModel.cs
 
 public sealed class MainWindowViewModel : INotifyPropertyChanged
 {
